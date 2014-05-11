@@ -2,6 +2,7 @@
   "name": "camera-debug",
   "description": "",
   "version": "0.0.1",
+  "main": "camera-debug.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:deathcap/camera-debug.git"
@@ -10,6 +11,7 @@
     "voxel"
   ],
   "dependencies": {
+    "dat-gui": "^0.5.0"
   },
   "license": "MIT"
 }
