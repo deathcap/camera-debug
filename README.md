@@ -1,0 +1,6 @@
+# camera-debug
+
+## License
+
+MIT
+

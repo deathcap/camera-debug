@@ -1,0 +1,15 @@
+{
+  "name": "camera-debug",
+  "description": "",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:deathcap/camera-debug.git"
+  },
+  "keywords": [
+    "voxel"
+  ],
+  "dependencies": {
+  },
+  "license": "MIT"
+}
