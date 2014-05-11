@@ -1,7 +1,7 @@
 {
   "name": "camera-debug",
   "description": "camera debug controls for voxel-shader (voxel.js plugin)",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "camera-debug.js",
   "repository": {
     "type": "git",
