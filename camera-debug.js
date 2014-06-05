@@ -41,9 +41,11 @@ CameraDebug.prototype.disable = function() {
   this.game.removeListener('tick', this.onTick);
 };
 
-var VectorProxy = function(obj, prop) {
+var VectorProxy = function(obj, prop, gui) {
   this.obj = obj;
   this.prop = prop;
+  this.gui = gui;
+
   this.x = this.y = this.z = 0.0;
 };
 
@@ -52,15 +54,19 @@ VectorProxy.prototype.update = function() {
   this.x = xyz[0];
   this.y = xyz[1];
   this.z = xyz[2];
-  // TODO: direct update datgui?
+
+  // http://workshop.chromeexperiments.com/examples/gui/#10--Updating-the-Display-Manually
+  for (var i in this.gui.__controllers) {
+    this.gui.__controllers[i].updateDisplay();
+  }
 };
 
 CameraDebug.prototype.addVectorFolder = function(name, obj, prop) {
-  var proxy = new VectorProxy(obj, prop);
   var folder = this.folder.addFolder(name);
-  folder.add(proxy, 'x').listen();
-  folder.add(proxy, 'y').listen();
-  folder.add(proxy, 'z').listen();
+  var proxy = new VectorProxy(obj, prop, folder);
+  folder.add(proxy, 'x');
+  folder.add(proxy, 'y');
+  folder.add(proxy, 'z');
   this.updateables.push(proxy);
 };
 
