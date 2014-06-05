@@ -30,6 +30,7 @@ CameraDebug.prototype.enable = function() {
 
   this.updateables = [];
   this.addVectorFolder('game.cameraPosition()', game, 'cameraPosition');
+  this.addVectorFolder('game.cameraVector()', game, 'cameraVector');
 
   this.game.on('tick', this.onTick = this.tick.bind(this));
 };
