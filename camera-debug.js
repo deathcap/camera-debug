@@ -46,7 +46,7 @@ var VectorProxy = function(obj, prop, gui) {
   this.prop = prop;
   this.gui = gui;
 
-  this.x = this.y = this.z = 0.0;
+  this.x = this.y = this.z = 0.01
 };
 
 VectorProxy.prototype.update = function() {
