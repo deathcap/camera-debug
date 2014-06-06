@@ -29,6 +29,8 @@ CameraDebug.prototype.enable = function() {
   this.folder.add(this.shader, 'cameraFar', 10, 1000).onChange(updateProjectionMatrix);
 
   this.updateables = [];
+  this.addVectorFolder('position', game.controls.target().avatar, 'position');
+  this.addVectorFolder('rotation', game.controls.target().avatar, 'rotation');
   this.addVectorFolder('game.cameraPosition()', game, 'cameraPosition');
   this.addVectorFolder('game.cameraVector()', game, 'cameraVector');
 
@@ -50,10 +52,19 @@ var VectorProxy = function(obj, prop, gui) {
 };
 
 VectorProxy.prototype.update = function() {
-  var xyz = this.obj[this.prop]();
-  this.x = xyz[0];
-  this.y = xyz[1];
-  this.z = xyz[2];
+  var value = this.obj[this.prop];
+  if (typeof value === 'function') {
+    // function returning vec3 array
+    var vector = value.call(value);
+    this.x = vector[0];
+    this.y = vector[1];
+    this.z = vector[2];
+  } else {
+    // property with .x .y .z
+    this.x = value.x;
+    this.y = value.y;
+    this.z = value.z;
+  }
 
   // http://workshop.chromeexperiments.com/examples/gui/#10--Updating-the-Display-Manually
   for (var i in this.gui.__controllers) {
