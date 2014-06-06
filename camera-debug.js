@@ -34,6 +34,11 @@ CameraDebug.prototype.enable = function() {
   this.addVectorFolder('game.cameraPosition()', game, 'cameraPosition');
   this.addVectorFolder('game.cameraVector()', game, 'cameraVector');
 
+  var restingFolder = this.folder.addFolder('resting');
+  restingFolder.add(this.game.controls.target().resting, 'x');
+  restingFolder.add(this.game.controls.target().resting, 'y');
+  restingFolder.add(this.game.controls.target().resting, 'z');
+
   this.game.on('tick', this.onTick = this.tick.bind(this));
 };
 
