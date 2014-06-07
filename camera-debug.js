@@ -55,7 +55,7 @@ VectorProxy.prototype.update = function() {
   var value = this.obj[this.prop];
   if (typeof value === 'function') {
     // function returning vec3 array
-    var vector = value.call(value);
+    var vector = value.call(this.obj);
     this.x = vector[0];
     this.y = vector[1];
     this.z = vector[2];
